@@ -13,6 +13,9 @@ statsmodels
 xlrd
 shap
 
+# To read midi files
+mido
+
 # Pytorch and Tensorflow modules for python venv
 tensorflow>=2.13.0
 torch>=2.0.0
