@@ -1,0 +1,23 @@
+# Data Science modules for python venv
+numpy
+pandas
+seaborn 
+scikit_learn 
+matplotlib 
+scipy
+scikit_learn
+jupyter
+ipykernel
+stemgraphic
+statsmodels
+xlrd
+shap
+
+# Pytorch and Tensorflow modules for python venv
+tensorflow>=2.13.0
+torch>=2.0.0
+torchvision>=0.15.0  # Optional, for computer vision tasks with PyTorch
+torchaudio>=2.0.0    # Optional, for audio tasks with PyTorch
+torchinfo
+torchmetrics
+torcheval
