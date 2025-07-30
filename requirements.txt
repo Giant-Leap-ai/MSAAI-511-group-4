@@ -6,8 +6,12 @@ scikit_learn
 matplotlib 
 scipy
 scikit_learn
+
+# Jupyter and debugpy
 jupyter
 ipykernel
+debugpy
+
 stemgraphic
 statsmodels
 xlrd
