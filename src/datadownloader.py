@@ -3,7 +3,7 @@ from pathlib import Path
 import shutil
 
 class DataRetriever:
-     '''
+    '''
     Class that would access a data folder
     containg multiple directories and zip files,
     where we would retrieve the MIDI files from:
