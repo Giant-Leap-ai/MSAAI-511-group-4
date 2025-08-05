@@ -28,15 +28,15 @@ class MidiPreprocesser:
         class_indices = []
         for composer in labels:
             if composer == "Bach":
-                class_indices.append(1)
-            elif composer == "Beethoven":
-                class_indices.append(2)
-            elif composer == "Chopin":
-                class_indices.append(3)
-            elif composer == "Mozart":
-                class_indices.append(4)
-            else:
                 class_indices.append(0)
+            elif composer == "Beethoven":
+                class_indices.append(1)
+            elif composer == "Chopin":
+                class_indices.append(2)
+            elif composer == "Mozart":
+                class_indices.append(3)
+            else:
+                class_indices.append(-1)
         return class_indices
 
     def get_midi_info(self) -> Tuple[List[Tuple[str, MidiFile]], List[int]]:
