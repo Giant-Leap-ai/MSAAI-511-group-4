@@ -16,5 +16,15 @@ The main objective of this project is to create two multiclassification computer
 path = kagglehub.dataset_download("blanderbuss/midi-classic-music")
 ```
 
-### Methods Used:
-- Data Donwloading and reading, all steps are inside notebooks with ```data_reading.ipynb```
+### Methods and classes Used:
+- Data Donwloading, all steps are inside notebooks with ```data_reading.ipynb```
+- Data Reading using a customized class called ``` DataRetriever(data_path = data_path)```. The following is the command to use after downloading data to obtain foldered data structure.
+
+```
+retriever = DataRetriever(data_path = data_path)
+retrieved_path = retriever.subdivide_data()
+```
+
+##### Folder Structure:
+
+<img width="267" height="164" alt="Image" src="https://github.com/user-attachments/assets/33f8714d-12df-4980-a64b-d28b9c45f16e" />
