@@ -25,6 +25,23 @@ retriever = DataRetriever(data_path = data_path)
 retrieved_path = retriever.subdivide_data()
 ```
 
+##### Folder Structure
+project-name/
+├── data/                  # Raw and processed datasets
+│   ├── datasets/          # Unmodified original data from kagglehub
+│   └── final_proj_data/   # Subdivided data of desired 4 composers.
+        ├── Bach/
+        ├── Bethoven/
+        ├── Chopin/
+        ├── Mozart/
+├── notebooks/             # Jupyter notebooks containing codes and models
+├── src/                   # Source code for the project
+│   ├── __init__.py
+│   ├── datadownloader.py  # Contains code to download raw data from kagglehub
+│   ├── utils.py           # All functions pertinent to preprocess MIDI -> `torch.tensor()`
+├── requirements.txt       # Project dependencies
+└── README.md              # Project documentation
+
 - Data Cleaning and preparation, all steps and logic are in notebooks ```data_piano_roll_extraction.ipynb``` inside notebooks. The following are the commands used to obtain the piano rolls data, obtaining a tensor of size: `(480, 125, 2515)`
 
 ```
@@ -37,9 +54,7 @@ equalizer = PianoRollsDiscreteEqualizer(piano_rolls = list_np_arrays, threshold 
 eq_piano_rolls = equalizer.get_equalized()
 ```
 
-
-##### Folder Structure:
-
-<img width="267" height="164" alt="Image" src="https://github.com/user-attachments/assets/33f8714d-12df-4980-a64b-d28b9c45f16e" /> 
+##### Piano Roll Extracted, Repeated, and Equalized to 2515:
 
 <img width="1415" height="670" alt="Image" src="https://github.com/user-attachments/assets/f3158cad-b685-427f-b4b3-d80c281da882" />
+
