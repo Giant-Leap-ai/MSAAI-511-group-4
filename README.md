@@ -26,6 +26,7 @@ retrieved_path = retriever.subdivide_data()
 ```
 
 ##### Folder Structure
+```
 project-name/
 ├── data/                  # Raw and processed datasets
 │   ├── datasets/          # Unmodified original data from kagglehub
@@ -41,6 +42,7 @@ project-name/
 │   ├── utils.py           # All functions pertinent to preprocess MIDI -> `torch.tensor()`
 ├── requirements.txt       # Project dependencies
 └── README.md              # Project documentation
+```
 
 - Data Cleaning and preparation, all steps and logic are in notebooks ```data_piano_roll_extraction.ipynb``` inside notebooks. The following are the commands used to obtain the piano rolls data, obtaining a tensor of size: `(480, 125, 2515)`
 
