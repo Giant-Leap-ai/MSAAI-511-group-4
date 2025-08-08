@@ -10,6 +10,11 @@ To run this project on your local machine:
    git clone https://github.com/Giant-Leap-ai/MSAAI-511-group-4.git```
 2. Run with Jypiter: https://jupyter.org/install 
 
+## Contrbutors:
+- Lucas Young
+- Titouan Magret
+- Juan Pablo Triana Martinez
+
 ## Project Intro/Objective
 The main objective of this project is to create two multiclassification computer vision models that are able to classify MIDI files -> Piano Rolls -> Composer (Bach, Bethoven, Chopin, Mozart). For this task we compared CNN and CNN-LSTM models. We got the data from: 
 ```
@@ -71,9 +76,6 @@ https://poloclub.github.io/cnn-explainer/. All the steps can be found in `cnn_ba
 - **Source**: https://www.kaggle.com/datasets/blanderbuss/midi-classic-music
 - **Variables and Size** `music.midi` files containing metadata information of music partitutes of 175 composers, including: Bach, Beethoven, Mozart, Brahms, Chopin, Tchaikovsky, Strauss, Stravinski, Prokofiev, Rachmaninov, Bernstein, Bartok, Handel, Ravel, Scriabin, and others
 
-#### Models Used:
-
-
 #### Project Steps:
 1. **Data Downloading/Preparation**: All data from MIDI files was donwloaded, and further separated into subfolders in order to analyze only four desired composers: Bach, Bethoven, Chopin, and Mozart.
 2. **Data Cleaning/Preparation**: Since the CNN and CNN-LSTM models required 2D data, the MIDI files were preprocessed using customized classes, contained in `src/`, in order to obtain from `music.midi` -> `np.ndarray` of piano rolls. 
@@ -88,5 +90,13 @@ https://poloclub.github.io/cnn-explainer/. All the steps can be found in `cnn_ba
 **CNN-LSTM Confusion Matrix and Metrics**:
 <img width="693" height="623" alt="Image" src="https://github.com/user-attachments/assets/5fd40999-4fc8-4e13-9a0e-edaa6a5b4ff5" />
 
+Looking into both models, is safe to say the CNN-LSTM model outperforms CNN metrics by almost 10%~12% on all. There is indeed considerations regarding the distribution of the `y_train` used. 
 
+There is slight data imbalances that were not addressed, so a consideration to improve even more is to undersample or data augment to have a balanced dataset for training. 
+
+Additionally, we explored relatively small sized compact models, so the possibility to use even deeper neural networks with more than 5 layers, or more complicated ones like computer vistion transformers or autoencoders, are also a possibility.
+
+The key thing to note was the step y step process to obtain an entire project from MIDI -> Piano Rolls -> Composer Labelling using `Python`, and `PyTorch`.
+
+Thank you for your time!
 
