@@ -14,7 +14,6 @@ To run this project on your local machine:
 - Lucas Young
 - Titouan Magret
 - Juan Pablo Triana Martinez
-
 ## Project Intro/Objective
 The main objective of this project is to create two multiclassification computer vision models that are able to classify MIDI files -> Piano Rolls -> Composer (Bach, Bethoven, Chopin, Mozart). For this task we compared CNN and CNN-LSTM models. We got the data from: 
 ```
@@ -93,6 +92,8 @@ https://poloclub.github.io/cnn-explainer/. All the steps can be found in `cnn_ba
 Looking into both models, is safe to say the CNN-LSTM model outperforms CNN metrics by almost 10%~12% on all. There is indeed considerations regarding the distribution of the `y_train` used. 
 
 There is slight data imbalances that were not addressed, so a consideration to improve even more is to undersample or data augment to have a balanced dataset for training. 
+
+<img width="1606" height="428" alt="Image" src="https://github.com/user-attachments/assets/6e70568b-2987-462b-9d3a-56521b5761a6" />
 
 Additionally, we explored relatively small sized compact models, so the possibility to use even deeper neural networks with more than 5 layers, or more complicated ones like computer vistion transformers or autoencoders, are also a possibility.
 
