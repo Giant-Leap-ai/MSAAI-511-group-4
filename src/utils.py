@@ -28,15 +28,15 @@ class MidiPreprocesser:
         class_indices = []
         for composer in labels:
             if composer == "Bach":
-                class_indices.append(1)
-            elif composer == "Beethoven":
-                class_indices.append(2)
-            elif composer == "Chopin":
-                class_indices.append(3)
-            elif composer == "Mozart":
-                class_indices.append(4)
-            else:
                 class_indices.append(0)
+            elif composer == "Beethoven":
+                class_indices.append(1)
+            elif composer == "Chopin":
+                class_indices.append(2)
+            elif composer == "Mozart":
+                class_indices.append(3)
+            else:
+                class_indices.append(-1)
         return class_indices
 
     def get_midi_info(self) -> Tuple[List[Tuple[str, MidiFile]], List[int]]:
@@ -168,6 +168,7 @@ class PianoRollsDiscreteEqualizer:
 
     Args:
         - piano_rolls: List of np.ndarrays of size (128, T), with varying Ts
+        - threshold: Integer of samples to equalize across all piano arrays.
     
     Returns:
         - equalized_piano_rolls: np.ndarray of shape (N, 128, Teq)
@@ -177,27 +178,24 @@ class PianoRollsDiscreteEqualizer:
         eq_piano_rolls = equalizer.get_equalized()
     '''
 
-    def __init__(self, piano_rolls: List[np.ndarray]) -> None:
+    def __init__(self,
+        piano_rolls: List[np.ndarray],
+        threshold: int = 2515) -> None:
+
         self.piano_rolls = piano_rolls
-        self.piano_median = None
         self.piano_diff_lengths = []
-    
-    def _calculate_median_various_lengths(self) -> None:
-        for nparray in self.piano_rolls:
-            self.piano_diff_lengths.append(nparray.shape[1])
-        self.piano_median = int(np.median(self.piano_diff_lengths))
+        self.threshold = threshold
     
     def get_equalized(self) -> np.ndarray[int]:
-        self._calculate_median_various_lengths()
         equalized_np_arrays = []
         for nparray in tqdm(self.piano_rolls, desc="Equalizing piano rolls...", total=len(self.piano_rolls)):
-            if len(nparray) >= self.piano_median:
-                equalized_np_arrays.append(nparray[:, :self.piano_median])
+            if len(nparray) >= self.threshold:
+                equalized_np_arrays.append(nparray[:, :self.threshold])
             else:
                 tiled = nparray
-                while tiled.shape[1] < self.piano_median:
-                    repeats = int((self.piano_median // tiled.shape[1]) + 1)
+                while tiled.shape[1] < self.threshold:
+                    repeats = int((self.threshold // tiled.shape[1]) + 1)
                     tiled = np.tile(tiled, repeats)  # Repeat along time axis
-                equalized_np_arrays.append(tiled[:, :self.piano_median])
+                equalized_np_arrays.append(tiled[:, :self.threshold])
 
         return np.array(equalized_np_arrays, dtype=np.int64)
